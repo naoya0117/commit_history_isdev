@@ -21,11 +21,11 @@ function diff_shortstats_by_commit_id() {
     local -r _diff_output=$(git show --shortstat "${_commit_id}" | grep -oP "(\d+)\sfile|(\d+)\sinsertion|(\d+)\sdeletion")
 
     # ファイル変更数を取得
-    _files=$(grep -oP '(\d+)\sfile' <<< "${_diff_output}" | grep -oP '\d+')
+    local -r _files=$(grep -oP '(\d+)\sfile' <<< "${_diff_output}" | grep -oP '\d+')
     # 行の追加数を取得
-    _additions=$(grep -oP '(\d+)\sinsertion' <<< "${_diff_output}" | grep -oP '\d+')
+    local -r _additions=$(grep -oP '(\d+)\sinsertion' <<< "${_diff_output}" | grep -oP '\d+')
     # 行の削除数を取得
-    _deletions=$(grep -oP '(\d+)\sdeletion' <<< "${_diff_output}" | grep -oP '\d+')
+    local -r _deletions=$(grep -oP '(\d+)\sdeletion' <<< "${_diff_output}" | grep -oP '\d+')
 
     echo "${_files:-0} ${_additions:-0} ${_deletions:-0}"
 }

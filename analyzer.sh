@@ -1,4 +1,5 @@
 #!/bin/env bash
+
 readonly SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 ############### 定数定義 #########################
